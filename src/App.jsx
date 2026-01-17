@@ -32,6 +32,7 @@ function App(){
 
 
         setTop5TripleA(result);
+        console.log(top5TripleA)
       } catch(err) {
         console.error("Error fetching games:", err);
       }
