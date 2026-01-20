@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 // import games from "./data/games.json";
 
 function App(){
-  const [top10TripleA, setTop10TripleA] = useState([]);
+  const [topTripleA, setTopTripleA] = useState([]);
 
   
   useEffect(() => {
@@ -16,23 +16,27 @@ function App(){
 
         const uniqueGame = new Set(); 
         const result = [];
+        let groupGame = [];
 
         data.forEach(game => {
           if (uniqueGame.size < 10) {
             if (!uniqueGame.has(game.internalName || game.title)) {
               uniqueGame.add(game.internalName || game.title)
-              result.push({
+              groupGame.push({
                 thumb: game.thumb,
                 title: game.title,
                 gameId: game.gameID
               })
+              if (groupGame.length === 5) {
+                result.push(groupGame)
+                groupGame = [];
+              }
             }
           }
         })
 
 
-        setTop10TripleA(result);
-        // console.log(top5TripleA)
+        setTopTripleA(result);
       } catch(err) {
         console.error("Error fetching games:", err);
       }
@@ -45,7 +49,7 @@ function App(){
     <>
       <NavBar></NavBar>
       <main>
-        <Outlet context={{top10TripleA}}></Outlet>
+        <Outlet context={{topTripleA}}></Outlet>
       </main>
     </>
   )

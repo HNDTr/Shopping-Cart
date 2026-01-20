@@ -2,12 +2,12 @@ import SlideShow from "../SlideShow/SlideShow"
 import { useOutletContext } from "react-router"
 
 function HomePage(){
-    const {top10TripleA} = useOutletContext();
+    const {topTripleA} = useOutletContext();
     // console.log(top5ATriple)
 
     return (
         <div>
-            <SlideShow top10Games={top10TripleA}></SlideShow>
+            <SlideShow topGames={topTripleA}></SlideShow>
         </div>
     )
 }
