@@ -1,3 +1,32 @@
 img{ 
-    
+    flex: 1;
+    width: 100%;
+    /* object-fit: cover; */
+}
+
+.sliderContainer{
+    display: flex;
+    /* gap: 25px; */
+}
+
+.gameItem{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    width: 20%;
+    height: 500px;         
+}
+
+.gameTitleContainer{
+    height: 20%;           /* bottom 20% */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight:bolder;
+    font-size: 1.2rem;
+    background-color: cadetblue;
 }

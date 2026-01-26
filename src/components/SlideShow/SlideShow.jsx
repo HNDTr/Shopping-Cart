@@ -1,4 +1,4 @@
-// import styles from '../SlideShow/SlideShow.module.css'
+import styles from '../SlideShow/SlideShow.module.css'
 import { useState } from 'react'
 
 function SlideShow({topGames}){
@@ -18,15 +18,15 @@ function SlideShow({topGames}){
         <div>
             <button onClick={prevSlide}>&#10094;</button>
             {topGames.map((games, index) => 
-                <div style={{display: index === slideIndex ? "block" : "none"}}>
+                <div key={index} style={{display: index === slideIndex ? "flex" : "none"}} className={styles.slideContainer}>
                    {games.map((game) => 
-                    <div key={game.gameId}>
-                            <img src={game.thumb} alt={game.title}/>
+                    <div key={game.gameId} className={styles.gameItem}>
+                        <img src={game.thumb} alt={game.title}/>
+                        <div className={styles.gameTitleContainer}>
                             <p>{game.title}</p>
+                        </div>
                     </div>
                    )}
-                    {/* <img src={game.thumb} alt={game.title}/>
-                    <p>{game.title}</p> */}
                 </div>
             )}
             <button onClick={nextSlide}>&#10095;</button>

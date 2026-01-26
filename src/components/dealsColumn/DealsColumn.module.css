@@ -1,0 +1,26 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.gameContainer{
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.imgContainer{
+    width: 200px;
+    height: 100%;
+    overflow: hidden;
+}
+
+img{
+    object-fit: fill;
+}
+
+.infoContainer{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
