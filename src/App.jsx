@@ -11,7 +11,7 @@ function App(){
   useEffect(() => {
     const fetchTopGamesDeals = async() => {
       try {
-        const res = await fetch('https://www.cheapshark.com/api/1.0/deals?AAA=1');
+        const res = await fetch('https://www.cheapshark.com/api/1.0/deals?storeID=2&AAA=1');
         if (!res.ok) throw new Error("Network response was not ok");
         const data = await res.json();
 
@@ -49,7 +49,7 @@ function App(){
   useEffect(() => {
     const fetchTopRatedGames = async () => {
       try {
-      const res = await fetch('https://www.cheapshark.com/api/1.0/deals?/steamRating=80')
+      const res = await fetch('https://www.cheapshark.com/api/1.0/deals?storeID=3&steamRating=80')
       if (!res.ok) throw new Error("Network response was not ok");
       const data = await res.json();
       const uniqueGame = new Set(); 
