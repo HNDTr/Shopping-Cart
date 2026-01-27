@@ -1,4 +1,5 @@
 import styles from '../SlideShow/SlideShow.module.css'
+import { Link } from "react-router-dom";
 import { useState } from 'react'
 
 function SlideShow({topGames}){
@@ -20,12 +21,12 @@ function SlideShow({topGames}){
             {topGames.map((games, index) => 
                 <div key={index} style={{display: index === slideIndex ? "flex" : "none"}} className={styles.slideContainer}>
                    {games.map((game) => 
-                    <div key={game.gameId} className={styles.gameItem}>
+                    <Link key={game.gameId} className={styles.gameItem} to={`/game/${game.gameId}`}>
                         <img src={game.thumb} alt={game.title}/>
                         <div className={styles.gameTitleContainer}>
                             <p>{game.title}</p>
                         </div>
-                    </div>
+                    </Link>
                    )}
                 </div>
             )}
