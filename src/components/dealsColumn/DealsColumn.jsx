@@ -1,4 +1,5 @@
 import styles from "../dealsColumn/DealsColumn.module.css"
+import { Link } from "react-router"
 
 function DealsColumn({deals}) {
     // console.log(deals)
@@ -6,7 +7,7 @@ function DealsColumn({deals}) {
         <div className={styles.mainContainer}>
             {deals.map((game) => (
                 
-                <div key={game.gameId} className={styles.gameContainer}>
+                <Link key={game.gameId} className={styles.gameContainer} to={`/game/${game.gameId}`}>
                     <div className={styles.imgContainer}>
                         <img src={game.thumb} alt={game.title} />
                     </div>
@@ -18,7 +19,7 @@ function DealsColumn({deals}) {
                             <h3>${game.salePrice}</h3>
                         </div>
                     </div>
-                </div>
+                </Link>
                 // console.log(game)
             ))}
         </div>
