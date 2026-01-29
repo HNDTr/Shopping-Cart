@@ -6,6 +6,7 @@ import { Outlet } from "react-router";
 function App(){
   const [topTripleA, setTopTripleA] = useState([]);
   const [topRated, setTopRated] = useState([])
+  const [stores, setStores] = useState([])
 
   
   useEffect(() => {
@@ -66,10 +67,6 @@ function App(){
               salePrice: game.salePrice,
               gameId: game.gameID
             })
-            // if (groupGame.length === 5) {
-            //   result.push(groupGame)
-            //   groupGame = [];
-            // }
           }
         }
       })
@@ -82,7 +79,27 @@ function App(){
       }
     }
     fetchTopRatedGames();
-    // console.log(topRated)
+  }, [])
+
+  useEffect(() => {
+    const fetchStores = async () => {
+      try {
+      const res = await fetch('https://www.cheapshark.com/api/1.0/stores')
+      if (!res.ok) throw new Error("Network response was not ok");
+      const data = await res.json();
+      const result = [];
+
+      data.forEach(store => {
+        result.push(store)
+      })
+
+      setStores(result)
+      }
+      catch(err) {
+         console.error("Error fetching game stores:", err);
+      }
+    }
+    fetchStores();
   }, [])
 
 
@@ -90,7 +107,7 @@ function App(){
     <>
       <NavBar></NavBar>
       <main>
-        <Outlet context={{topTripleA, topRated}}></Outlet>
+        <Outlet context={{topTripleA, topRated, stores}}></Outlet>
       </main>
     </>
   )

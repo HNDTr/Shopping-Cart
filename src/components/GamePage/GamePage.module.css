@@ -1,0 +1,32 @@
+.thumbTitleContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.storeDealContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: rgb(32, 46, 73);
+}
+
+
+.retailPrice{
+    text-decoration: line-through;
+}
+
+.priceContainer{
+    display: flex;
+    align-items: center;
+}
+
+.salesPrice{
+    color: green;
+}
+
+.storeTitleContainer{
+    display: flex;
+    align-items: start;
+}

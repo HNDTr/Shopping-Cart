@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router";
+import { useParams, useOutletContext } from "react-router";
+import styles from '../GamePage/GamePage.module.css'
 
 function GamePage(){
     const [currentGame, setCurrentGame] = useState();
+    const {stores} = useOutletContext();
     const {id} = useParams()
     useEffect(() => {
         const fetchGame = async () => {
@@ -24,8 +26,38 @@ function GamePage(){
     }
 
     return (
-        <div>
-            <h1>{currentGame.info.title}</h1>
+        <div className={styles.gamePageContainer}>
+            <div className={styles.thumbTitleContainer}>
+                <div>
+                    <img src={currentGame.info.thumb} alt="" />
+                </div>
+                <div>
+                    <h1>{currentGame.info.title}</h1>
+                    <h2>Historical Low</h2>
+                    <h3>${currentGame.cheapestPriceEver.price}</h3>
+                </div>
+            </div>
+            <div>
+                {currentGame.deals.map((deal) => (
+                    <div className={styles.storeDealContainer}>
+                        <div className={styles.storeTitleContainer}> 
+                            <div>
+                                <h1 className="storeName">{stores[deal.storeID - 1].storeName}</h1>
+                                <img src={`https://www.cheapshark.com${stores[deal.storeID - 1].images.banner}`} alt="Store's banner" />
+                            </div>
+                            <h2>-{Math.round(deal.savings)}%</h2>
+                        </div>
+                        <div >
+                            <div className={styles.priceContainer}>
+                                <h5 className={styles.retailPrice}>${deal.retailPrice}</h5>
+                                <h1 className={styles.salesPrice}>${deal.price}</h1>
+                            </div>
+                            
+                            <button>Add To Cart</button>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
