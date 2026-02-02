@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { useParams, useOutletContext } from "react-router";
+import { useParams, useOutletContext } from "react-router-dom";
 import styles from '../GamePage/GamePage.module.css'
 
 function GamePage(){
     const [currentGame, setCurrentGame] = useState();
-    const {stores} = useOutletContext();
+    const {stores, addToCart} = useOutletContext();
     const {id} = useParams()
+    
     useEffect(() => {
         const fetchGame = async () => {
             try {
@@ -53,7 +54,13 @@ function GamePage(){
                                 <h1 className={styles.salesPrice}>${deal.price}</h1>
                             </div>
                             
-                            <button>Add To Cart</button>
+                            <button onClick={() => addToCart({
+                              title: currentGame.info.title,
+                              price: deal.price,
+                              retailPrice: deal.retailPrice,
+                              storeID: deal.storeID,
+                              thumb: currentGame.info.thumb
+                            })}>Add To Cart</button>
                         </div>
                     </div>
                 ))}

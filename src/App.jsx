@@ -7,6 +7,16 @@ function App(){
   const [topTripleA, setTopTripleA] = useState([]);
   const [topRated, setTopRated] = useState([])
   const [stores, setStores] = useState([])
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
+  const removeFromCart = (index) => {
+    setCart(cart.filter((_, i) => i !== index));
+  };
+
 
   
   useEffect(() => {
@@ -107,7 +117,7 @@ function App(){
     <>
       <NavBar></NavBar>
       <main>
-        <Outlet context={{topTripleA, topRated, stores}}></Outlet>
+        <Outlet context={{topTripleA, topRated, stores, addToCart, removeFromCart, cart}}></Outlet>
       </main>
     </>
   )
