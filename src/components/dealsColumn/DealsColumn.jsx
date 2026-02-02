@@ -9,7 +9,7 @@ function DealsColumn({deals}) {
                 
                 <Link key={game.gameId} className={styles.gameContainer} to={`/game/${game.gameId}`}>
                     <div className={styles.imgContainer}>
-                        <img src={game.thumb} alt={game.title} />
+                        <img src={game.thumb} alt={game.title} className={styles.gameImg}/>
                     </div>
                     <div className={styles.infoContainer}>
                         <div>

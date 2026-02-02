@@ -22,7 +22,7 @@ function SlideShow({topGames}){
                 <div key={index} style={{display: index === slideIndex ? "flex" : "none"}} className={styles.slideContainer}>
                    {games.map((game) => 
                     <Link key={game.gameId} className={styles.gameItem} to={`/game/${game.gameId}`}>
-                        <img src={game.thumb} alt={game.title}/>
+                        <img src={game.thumb} alt={game.title} className={styles.gameImg}/>
                         <div className={styles.gameTitleContainer}>
                             <p>{game.title}</p>
                         </div>

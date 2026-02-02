@@ -12,8 +12,8 @@ function CartPage(){
                     <p>Your cart is empty</p>
                 ) : (
                     cart.map((item, index) => (
-                        <div key={index} className={styles.gameContainer} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-                            <img src={item.thumb} alt={item.title} />
+                        <div key={index} className={styles.gameContainer}>
+                            <img src={item.thumb} alt={item.title} className={styles.gameImage} />
                             <h3>{item.title}</h3>
                             <p>${item.price}</p>
                             <p className={styles.retailPrice}>${item.retailPrice}</p>

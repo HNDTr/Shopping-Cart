@@ -2,11 +2,10 @@
     text-decoration: line-through;
 }
 
-img {
+.gameImage {
     width: 50px;
     height: 50px;
 }
-
 
 .gameContainer{
     border: 1px solid #ccc;
