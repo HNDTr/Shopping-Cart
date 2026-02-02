@@ -21,7 +21,7 @@ function NavBar(){
             </div>
             <div className={styles.cartContainer}>
                 <Link className={styles.link}><h2>List</h2></Link>
-                <Link className={styles.link}><IoCartOutline className={styles.cartIcon}/></Link>
+                <Link to="/checkout" className={styles.link}><IoCartOutline className={styles.cartIcon}/></Link>
             </div>
         </div>
     );
